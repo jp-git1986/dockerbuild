@@ -9,7 +9,7 @@ pipeline {
         }
         stage('dockerbuild') {
             steps {
-                docker build -t jenkinsjp:1.0 .
+                sh 'docker build -t jenkinsjp:1.0 .'
             }
         }
         stage('dockersave') {
