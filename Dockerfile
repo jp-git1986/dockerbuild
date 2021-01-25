@@ -1,4 +1,5 @@
 FROM jenkins/jenkins:2.263.2-lts-jdk11
+MAINTAINER JP
 USER root
 RUN apt-get update && apt-get install -y apt-transport-https \
        ca-certificates curl gnupg2 \
