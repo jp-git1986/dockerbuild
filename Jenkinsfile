@@ -20,7 +20,7 @@ pipeline {
         stage ('copyandloadimage') {
     steps{
         sshagent(credentials : ['dockernode']) {
-            sh 'scp jenkins.tar automation@35.192.185.140:/tmp/'
+            sh 'scp -o StrictHostKeyChecking=no jenkins.tar automation@35.192.185.140:/tmp/'
             sh 'docker load >/tmp/jenkins.tar'
             sh 'docker images'
         }
