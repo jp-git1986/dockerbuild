@@ -22,8 +22,8 @@ pipeline {
         sshagent(credentials : ['dockernode']) {
             sh 'scp -o StrictHostKeyChecking=no jenkins.tar automation@35.192.185.140:/tmp/'
             sh 'ssh automation@35.192.185.140 docker load  --input /tmp/jenkins.tar'
-            sh 'docker images'
-            sh 'docker run --name jenkins-jp  --rm --detach --env DOCKER_HOST=tcp://docker:2376 --publish 8080:8080 --volume jenkins-data:/var/jenkins_home jenkinsjp":$BUILD_NUMBER"'
+            sh 'ssh automation@35.192.185.140 docker images'
+            sh 'ssh automation@35.192.185.140 docker run --name jenkins-jp  --rm --detach --env DOCKER_HOST=tcp://docker:2376 --publish 8080:8080 --volume jenkins-data:/var/jenkins_home jenkinsjp":$BUILD_NUMBER"'
         }
     }
 }
