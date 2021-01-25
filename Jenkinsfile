@@ -9,12 +9,12 @@ pipeline {
         }
         stage('dockerbuild') {
             steps {
-                sh 'docker build -t jenkinsjp:${currentBuild.number} .'
+                sh 'docker build -t jenkinsjp":$BUILD_NUMBER" .'
             }
         }
         stage('dockersave') {
             steps {
-                sh 'docker save jenkinsjp:${currentBuild.number} > jenkins.tar'
+                sh 'docker save jenkinsjp":$BUILD_NUMBER" > jenkins.tar'
             }
         }
         stage ('copyandloadimage') {
