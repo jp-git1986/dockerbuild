@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: jenkinsjp
+  name: jenkinsjp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: jenkinsjp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: jenkinsjp
+    spec:
+      containers:
+      - image: myregistry.local:5000/jenkinsjp:latest
+        name: jenkinsjp
+        imagePullPolicy: "IfNotPresent"
+        resources: {}
+        volumeMounts:
+        - name: jenkins-vol
+          mountPath: /var/jenkins_home
+      volumes:
+      - name: jenkins-vol
+        emptyDir: {}
